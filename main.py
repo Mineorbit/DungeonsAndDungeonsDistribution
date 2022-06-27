@@ -6,7 +6,7 @@ import shutil
 import controllers as file_controller
 app = FastAPI()
 from io import BytesIO
-
+import os
 
 @app.get("/")
 def read_root():
