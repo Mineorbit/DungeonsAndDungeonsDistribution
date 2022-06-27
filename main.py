@@ -10,10 +10,10 @@ from io import BytesIO
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    return {"Hey :)"}
 
 
-@app.post("/library", tags=["file"])
+@app.post("/library", tags=["library"])
 async def upload_library(file: UploadFile = File(...)):
     file = await file_controller.upload_file(file)
     return "Completed"
@@ -21,15 +21,15 @@ async def upload_library(file: UploadFile = File(...)):
 
 #https://www.tutorialsbuddy.com/how-to-zip-multiple-files-in-python-for-download-using-fastapi origin
 
-@app.get("/library/build")
+@app.get("/library/build", tags=["library"])
 async def build_library():
-        shutil.make_archive(output_filename, 'zip', dir_name)
+        shutil.make_archive("library_files/Library", 'zip', "library_files/Library")
         return "Built Library Archive"
 
 
 
 
-@app.get("/library", tags=["file"])
+@app.get("/library", tags=["library"])
 async def download_library():
     f = await file_controller.download_file()
     return f
