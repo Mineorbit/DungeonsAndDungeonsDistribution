@@ -9,4 +9,4 @@ if inside:
     print('I am running in a Docker container')
     h = "0.0.0.0"
 if __name__ == '__main__':
-    uvicorn.run("main:app", host=h, port=8080)
+    uvicorn.run("main:app", host=h, port=8090)
