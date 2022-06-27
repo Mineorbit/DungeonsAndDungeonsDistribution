@@ -23,6 +23,7 @@ async def upload_library(file: UploadFile = File(...)):
 
 @app.get("/library/build", tags=["library"])
 async def build_library():
+        os.remove("library_files/Library.zip")
         shutil.make_archive("library_files/Library", 'zip', "library_files/Library")
         return "Built Library Archive"
 
